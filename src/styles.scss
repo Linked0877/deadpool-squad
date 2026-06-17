@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --ds-red: #e51515;
+  --ds-red-dark: #b01010;
+  --ds-black: #0a0a0a;
+  --ds-dark: #151515;
+  --ds-card: #1e1e1e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--ds-black);
+  color: #ffffff;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
