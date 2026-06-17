@@ -1,58 +1,16 @@
-.ds-page {
-  background-color: var(--ds-black);
-  min-height: 100vh;
+@keyframes scanline {
+  0%   { top: -4px; }
+  100% { top: 100vh; }
 }
 
-.ds-logo {
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-
-  &__bracket {
-    color: var(--ds-red);
-  }
-
-  &__name {
-    color: #ffffff;
-    text-shadow: 0 0 30px rgba(229, 21, 21, 0.4);
-  }
-}
-
-.ds-tagline {
-  color: #888888;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  letter-spacing: 0.05em;
-}
-
-.ds-construction {
-  max-width: 560px;
-  width: 100%;
-
-  &__bar {
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--ds-red), transparent);
-  }
-
-  &__title {
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    font-weight: 700;
-    color: var(--ds-red);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  &__text {
-    color: #aaaaaa;
-    line-height: 1.7;
-    font-size: 1rem;
-  }
-}
-
-.ds-footer {
-  color: #444444;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  width: 100%;
-  text-align: center;
+.scanline {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ds-red);
+  box-shadow: 0 0 8px var(--ds-red), 0 0 24px rgba(229, 21, 21, 0.4);
+  animation: scanline 7s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
 }

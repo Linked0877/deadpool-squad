@@ -1,0 +1,203 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3rem 1rem 4rem;
+  text-align: center;
+}
+
+// ── Header label ────────────────────────────────────────────
+.home__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.home__header-line {
+  flex: 1;
+  height: 2px;
+  background: var(--ds-red);
+}
+
+.home__header-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--ds-red);
+  white-space: nowrap;
+}
+
+// ── Logo ────────────────────────────────────────────────────
+.home__logo-wrap {
+  margin-bottom: 2rem;
+}
+
+.home__logo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid var(--ds-red);
+  box-shadow: 0 0 20px rgba(229, 21, 21, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.8);
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.home__logo-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+// ── Title ────────────────────────────────────────────────────
+.home__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-shadow:
+    0 0 20px rgba(229, 21, 21, 0.3),
+    2px 2px 0 #1a0000;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+// ── Nav ──────────────────────────────────────────────────────
+.home__nav {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.2rem;
+}
+
+.home__nav-link {
+  color: var(--ds-red);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #ff4444;
+  }
+
+  &--disabled {
+    color: #555;
+    cursor: default;
+  }
+}
+
+.home__nav-sep {
+  color: #444;
+}
+
+// ── Divider ──────────────────────────────────────────────────
+.home__divider {
+  width: 80px;
+  height: 2px;
+  background: var(--ds-red);
+  margin-bottom: 1.5rem;
+}
+
+// ── Description ──────────────────────────────────────────────
+.home__description {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 3.5rem;
+}
+
+// ── Cards ────────────────────────────────────────────────────
+.home__cards {
+  width: 100%;
+}
+
+.ds-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, background 0.25s;
+
+  &:hover {
+    border-color: var(--ds-red);
+    background: #1e1010;
+
+    .ds-card__corner {
+      border-color: var(--ds-red);
+    }
+
+    .ds-card__title {
+      color: #ff4444;
+    }
+  }
+
+  // Coin rouge en bas à droite
+  &__corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    transition: border-color 0.25s;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: #0e0e0e;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ds-red);
+  }
+
+  &__body {
+    text-align: left;
+  }
+
+  &__label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #555;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  &__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    transition: color 0.25s;
+  }
+
+  &__text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+  }
+}
