@@ -21,7 +21,7 @@ services:
       - traefik_public           # ⚠️ à adapter
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.deadpool-squad.rule=Host(`mondomaine.com`)"   # ⚠️ à adapter
+      - "traefik.http.routers.deadpool-squad.rule=Host(`deadpool-squad-legacy.eldevia.fr`)"
       - "traefik.http.routers.deadpool-squad.entrypoints=websecure"
       - "traefik.http.routers.deadpool-squad.tls.certresolver=letsencrypt" # ⚠️ à adapter
       - "traefik.http.services.deadpool-squad.loadbalancer.server.port=80"
