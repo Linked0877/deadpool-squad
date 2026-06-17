@@ -1,0 +1,9 @@
+node_modules
+dist
+.angular
+.git
+.gitignore
+.editorconfig
+*.md
+deploiement.sh
+docker-compose.snippet.yml
