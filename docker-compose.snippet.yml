@@ -1,31 +1,32 @@
 # Ceci est un EXTRAIT à ajouter à votre docker-compose.yml existant
 # (celui qui fait déjà tourner Traefik et vos autres sites), pas un fichier autonome.
 #
-# Points à vérifier/adapter avant de l'utiliser :
-#   1. Le nom du réseau externe (ici "traefik_public") doit correspondre exactement
-#      à celui déclaré par votre stack Traefik actuelle.
-#   2. Le nom du certresolver (ici "letsencrypt") doit correspondre à celui
-#      configuré dans vos arguments Traefik (--certificatesresolvers.XXX...).
-#   3. Le domaine dans la règle Host(`...`) doit être le vôtre.
-#
 # Workflow de mise à jour :
 #   1. En local : ./deploiement.sh  (build + push vers Docker Hub)
-#   2. Sur le VPS : docker compose pull deadpool-squad && docker compose up -d --force-recreate deadpool-squad
+#   2. Sur le VPS : ./deploiement-vps.sh
 
 services:
   deadpool-squad:
-    image: linked59/deadpool-squad:latest   # image pré-buildée poussée sur Docker Hub
+    image: linked59/deadpool-squad:latest
     container_name: deadpool-squad
     restart: unless-stopped
     networks:
-      - traefik_public           # ⚠️ à adapter
+      - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.deadpool-squad.rule=Host(`deadpool-squad-legacy.eldevia.fr`)"
-      - "traefik.http.routers.deadpool-squad.entrypoints=websecure"
-      - "traefik.http.routers.deadpool-squad.tls.certresolver=letsencrypt" # ⚠️ à adapter
+      - "traefik.docker.network=proxy"
+
+      # Router HTTP
+      - "traefik.http.routers.deadpool-squad-http.rule=Host(`deadpool-squad-legacy.eldevia.fr`)"
+      - "traefik.http.routers.deadpool-squad-http.entrypoints=web"
+
+      # Router HTTPS
+      - "traefik.http.routers.deadpool-squad-https.rule=Host(`deadpool-squad-legacy.eldevia.fr`)"
+      - "traefik.http.routers.deadpool-squad-https.entrypoints=websecure"
+      - "traefik.http.routers.deadpool-squad-https.tls=true"
+      - "traefik.http.routers.deadpool-squad-https.tls.certresolver=letsencrypt"
       - "traefik.http.services.deadpool-squad.loadbalancer.server.port=80"
 
 networks:
-  traefik_public:
-    external: true               # ⚠️ doit correspondre au réseau externe de votre stack Traefik
+  proxy:
+    external: true
